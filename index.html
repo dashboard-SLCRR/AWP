@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Workplan for 2026</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --green: #66BB95;
+            --orange: #F18652;
+            --blue: #225484;
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            --border-color: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 3rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .super-title {
+            color: var(--blue);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .excel-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .excel-link:hover {
+            text-decoration: underline;
+            color: #1e40af;
+        }
+
+        /* KPIs */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .kpi-icon {
+            background: #f0fdf4;
+            color: #16a34a;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .kpi-text h4 {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .kpi-text p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .legend-card {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .legend-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* Filters */
+        .filter-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.6rem 1rem 0.6rem 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background: var(--bg-color);
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        .filter-dropdowns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .dropdown-wrapper {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-wrapper i {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .dropdown-wrapper select {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 0.3rem 0;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-top-width: 4px;
+            border-top-style: solid;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .card-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .activity-id {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .budget {
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: monospace;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            background: #f8fafc;
+            color: #334155;
+        }
+
+        .card hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin-bottom: 1.25rem;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .detail-value.empty {
+            color: #cbd5e1;
+        }
+
+        .detail-value.pill {
+            background: #f1f5f9;
+            padding: 0.1rem 0.4rem;
+            border-radius: 0.25rem;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+            font-size: 0.75rem;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="super-title">Local Peacebuilding and Resilience Project</div>
+            <h1>Annual Workplan for 2026</h1>
+            <div class="subtitle">
+                <i class="fas fa-table-cells-large"></i> Activities sorted by budget
+            </div>
+            <a href="https://drive.google.com/drive/folders/1nQ2siHqm37lI7xb9k9d2LS3JBKexffew?usp=sharing" target="_blank" class="excel-link">
+                <i class="fas fa-external-link-alt"></i> (Excel File)
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- KPI Section -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="kpi-text">
+                    <h4>Estimated Budget</h4>
+                    <p id="total-budget">$0</p>
+                </div>
+            </div>
+            
+            <div class="kpi-card legend-card">
+                <div class="kpi-text" style="width: 100%;">
+                    <h4 style="margin-bottom: 0.75rem;">Thematic Area Legend</h4>
+                    <div class="legend-tags">
+                        <span class="legend-item" style="color: var(--blue);">
+                            <div class="dot" style="background: var(--blue);"></div> Basic Services
+                        </span>
+                        <span class="legend-item" style="color: var(--green);">
+                            <div class="dot" style="background: var(--green);"></div> Livelihood
+                        </span>
+                        <span class="legend-item" style="color: var(--orange);">
+                            <div class="dot" style="background: var(--orange);"></div> Peacebuilding
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filter-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search by activity title or #...">
+            </div>
+            <div class="filter-dropdowns">
+                <div class="dropdown-wrapper">
+                    <i class="fas fa-filter"></i>
+                    <select id="categoryFilter">
+                        <option value="All">All Categories</option>
+                    </select>
+                </div>
+                <div class="dropdown-wrapper">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <select id="regionFilter">
+                        <option value="All">All Regions</option>
+                    </select>
+                </div>
+                <div class="dropdown-wrapper">
+                    <i class="fas fa-briefcase"></i>
+                    <select id="invitationFilter">
+                        <option value="All">All Inv. Types</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="cards-grid" id="cardsContainer">
+            <!-- Cards injected via JS -->
+        </div>
+
+    </div>
+
+    <script>
+        // Data payload
+        const rawActivities = [
+            { id: "#7", title: "Structural Restoration of Al-Rabii Market", budget: "$2,665,407", budgetNum: 2665407, category: "Basic Services", type: "Civil Works", region: "East", municipality: "Benghazi", invitation: "RFQ", staff: "Ehab", donor: "11227/10159", announcement: "W1 / M6", contractEnd: "W4 / M12" },
+            { id: "#34", title: "Developing and equipping three advanced regional response centres in the Jabal al Akhdar area (Derna, Al Bayda, Marj), and ensuring their network connectivity with all regional offices nationwide.", budget: "$700,000", budgetNum: 700000, category: "Basic Service", type: "Civil Work", region: "East", municipality: "Derna, Al Bayda, Marj", invitation: "RFQ", staff: "Shembesh", donor: "AFESD/IsDB", announcement: "2026-06-01", contractEnd: "2026-08-30" },
+            { id: "#4", title: "Completion of the Public Auditorium in Qaser Ben Gashir Municipality, Libya", budget: "$467,005", budgetNum: 467005, category: "Basic Services", type: "Civil Works", region: "West", municipality: "Qaser Ben Gashir", invitation: "RFQ", staff: "Ehab", donor: "11227", announcement: "—", contractEnd: "W4/M1" },
+            { id: "#2", title: "Capacity Development for Enterprises and Entrepreneurs", budget: "$436,868", budgetNum: 436868, category: "Livelihood", type: "Services", region: "West and East", municipality: "Tajura and Derna", invitation: "RFP", staff: "Osama/Nora", donor: "000020", announcement: "W1/M4", contractEnd: "W1/M6" },
+            { id: "#9", title: "Establishment and operationalization of the Heritage Observatory", budget: "$266,432", budgetNum: 266432, category: "Basic Services", type: "Services", region: "East", municipality: "Benghazi", invitation: "RFP", staff: "Ehab", donor: "11227/10159", announcement: "W1 / M6", contractEnd: "W4 / M12" },
+            { id: "#36", title: "Purchasing and equipping of specialized response vehicles.", budget: "$240,000", budgetNum: 240000, category: "Basic Service", type: "Good", region: "East", municipality: "—", invitation: "RFQ", staff: "Shembesh", donor: "AFESD/IsDB", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#5", title: "Rehabilitation of Historical Omar Ben Abdulaziz School in Qaser Bin Gashir Municipality", budget: "$232,500", budgetNum: 232500, category: "Basic Services", type: "Civil Works", region: "West", municipality: "—", invitation: "RFQ", staff: "Ehab", donor: "11227", announcement: "—", contractEnd: "W3/M2" },
+            { id: "#17", title: "Rehabilitate climate-resilient water infrastructure and provide climate-smart agricultural inputs—to farmers from both host and displaced communities.", budget: "$193,623", budgetNum: 193623, category: "Livelihood", type: "Services", region: "South", municipality: "—", invitation: "RFQ", staff: "Shembesh", donor: "AFESD/IsDB", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#32", title: "Support livelihood sustainability and revitalize value chains. Provision of asset recovery tools, technical support and grants to Households and MSMEs", budget: "$190,000", budgetNum: 190000, category: "Livelihood", type: "Services", region: "East", municipality: "—", invitation: "RFP", staff: "Osama/Nora", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#16", title: "Provide targeted gender-sensitive grants and business development support to selected agri-MSMEs, farmers and cooperatives prioritizing enterprises led by women, youth, and displacement-affected populations.", budget: "$150,000", budgetNum: 150000, category: "Livelihood", type: "Services", region: "South", municipality: "—", invitation: "RFP", staff: "Shembesh", donor: "AFESD/IsDB", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#37", title: "Procurement of essential logistical supplies for response, providing urgent shelter solutions, and sustainable Water, Sanitation, and Hygiene (WASH) packages.", budget: "$140,880", budgetNum: 140880, category: "Basic Service", type: "Good", region: "East", municipality: "—", invitation: "RFQ", staff: "Shembesh", donor: "AFESD/IsDB", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#14", title: "Conduct local agricultural market systems and value chain assessments with a gender perspective to identify agri-business opportunities, input/output constraints, skills gaps, and financial needs and guide tailored support packages for MSMEs, farmers and cooperatives", budget: "$105,000", budgetNum: 105000, category: "Livelihood", type: "Services", region: "South", municipality: "—", invitation: "RFP", staff: "Shembesh", donor: "AFESD/IsDB", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#3", title: "Development of a Digital and georeferenced system for enhanced planning of reconstruction activities", budget: "$100,000", budgetNum: 100000, category: "Basic Services", type: "Services", region: "West", municipality: "—", invitation: "RFP", staff: "Ibrahim", donor: "11227", announcement: "W2 / M2", contractEnd: "W4 / M3" },
+            { id: "#6", title: "Furniture for Historical Omar Ben Abdulaziz School in Qaser Bin Gashir Municipality", budget: "$100,000", budgetNum: 100000, category: "Basic Services", type: "Good", region: "West", municipality: "—", invitation: "RFQ", staff: "Ehab", donor: "11227", announcement: "—", contractEnd: "W4/M2" },
+            { id: "#10", title: "Technical capacity gaps are addressed through provision of tailored trainings (implementation of priority projects)", budget: "$100,000", budgetNum: 100000, category: "Basic Services", type: "Services", region: "East", municipality: "Benghazi", invitation: "RFP", staff: "Ehab", donor: "11227/10159", announcement: "W1 / M6", contractEnd: "W4 / M12" },
+            { id: "#11", title: "Implementation of Community-Based Interventions for Water, Landscape, and Inclusive Urban Management", budget: "$100,000", budgetNum: 100000, category: "Basic Services", type: "Services", region: "East", municipality: "Benghazi", invitation: "RFP", staff: "Ehab", donor: "11227/10159", announcement: "W1 / M6", contractEnd: "W4 / M12" },
+            { id: "#22", title: "Conduct market assessment, with special emphasis on climate adaptation related initiatives, to identify local producer needs, consumer vulnerabilities and potential market opportunities.", budget: "$100,000", budgetNum: 100000, category: "Livelihood", type: "Services", region: "West", municipality: "—", invitation: "RFP", staff: "Ibrahim", donor: "11227", announcement: "W2 / M2", contractEnd: "W4 / M3" },
+            { id: "#15", title: "Provision of logistics service provierr for Implementing Training of Trainers (ToT) programs and intensive training for volunteers and staff to enhance their professional readiness.", budget: "$92,159", budgetNum: 92159, category: "Services", type: "Service", region: "East", municipality: "—", invitation: "RFQ", staff: "Shembesh", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#8", title: "Supervision of Works (CTG Engineer)", budget: "$61,200", budgetNum: 61200, category: "Basic Services", type: "Civil Works", region: "East", municipality: "Benghazi", invitation: "IC - CTG", staff: "Ehab", donor: "11227/10159", announcement: "—", contractEnd: "W4 / M12" },
+            { id: "#21", title: "Conduct gender response analysis of local value chains in borderlands communities to inform specific women economic empowerment programme in the three countries", budget: "$60,000", budgetNum: 60000, category: "Livelihood", type: "Services", region: "South", municipality: "—", invitation: "RFP", staff: "Shembesh", donor: "AFESD/IsDB", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#18", title: "Conduct Human Centred Design Research to identify challenges, behaviours, barriers,capacities, and opportunities to define areas of interventions to enhance IDPs, returnees, youth and women economic empowerment for lasting peace.", budget: "$60,000", budgetNum: 60000, category: "Livelihood", type: "Services", region: "East", municipality: "—", invitation: "RFP", staff: "Osama/Nora", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#12", title: "Technical capacity gaps are addressed through provision of tailored trainings (implementation of priority projects)", budget: "$50,000", budgetNum: 50000, category: "Basic Services", type: "Services", region: "East", municipality: "Benghazi", invitation: "RFQ", staff: "Ehab", donor: "11227/10159", announcement: "W1 / M6", contractEnd: "W4 / M12" },
+            { id: "#13", title: "Implementing an Intensive Awareness and Outreach campaigns to sensitize citizens on the role and functions of the Emergency Response Units", budget: "$49,863", budgetNum: 49863, category: "Basic Services", type: "Services", region: "East", municipality: "Benghazi", invitation: "RFQ", staff: "Ehab", donor: "11227/10159", announcement: "W1 / M6", contractEnd: "W4 / M12" },
+            { id: "#1", title: "Rapid Livelihood Needs Assessment", budget: "$40,000", budgetNum: 40000, category: "Livelihood", type: "Services", region: "West and East", municipality: "Tajura and Derna", invitation: "RFP", staff: "Osama/Nora", donor: "000020", announcement: "W2 / M2", contractEnd: "W4 / M3" },
+            { id: "#20", title: "Enhance sustainable livelihoods for targeted groups in Kufra community through skills building programme - Training of local / cross border cooperatives.", budget: "$40,000", budgetNum: 40000, category: "Livelihood", type: "Services", region: "East", municipality: "—", invitation: "RFP", staff: "Osama/Nora", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#35", title: "Procurement of Transportation Services for the Activation of mobile field psychosocial support teams - Organize mobile outreach sessions/clinics", budget: "$35,000", budgetNum: 35000, category: "Services", type: "Service", region: "East", municipality: "—", invitation: "IC - CTG", staff: "Shembesh", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#30", title: "Implementation of the Women Referral System in collaboration with the Women Empowerment and Affairs Offices in the target municipalities.", budget: "$35,000", budgetNum: 35000, category: "Peacebuilding", type: "Services", region: "South", municipality: "—", invitation: "Consultancy", staff: "Shembesh", donor: "PBF", announcement: "2026-04-01", contractEnd: "2026-06-30" },
+            { id: "#19", title: "2.2 Activity: Provide technical support to enhance employability through the direct job matching platform(Trip to Egypt for the knowledge exchange organized )", budget: "$30,000", budgetNum: 30000, category: "Livelihood", type: "Services", region: "East", municipality: "—", invitation: "RFP", staff: "Osama/Nora", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#24", title: "Conduct inclusive context and climate security analysis, sensitive to women and youth, in the targeted municipalities to confirm the main drivers of fragility and conflict and develop a peace responsiveness programmatic approach accordingly.", budget: "$30,000", budgetNum: 30000, category: "Peacebuilding", type: "Services", region: "East", municipality: "—", invitation: "RFP", staff: "Osama/Nora", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#31", title: "Community Mobilizer (CTG)", budget: "$22,926", budgetNum: 22926, category: "Peacebuilding", type: "Services", region: "South", municipality: "—", invitation: "CTG", staff: "Shembesh", donor: "PBF", announcement: "2026-04-01", contractEnd: "2026-12-31" },
+            { id: "#41", title: "Provision of Trainer for Implementing Training of Trainers (ToT) programs and intensive training for volunteers and staff to enhance their professional readiness.", budget: "$17,081", budgetNum: 17081, category: "Services", type: "IC", region: "East", municipality: "—", invitation: "UC", staff: "Lujain", donor: "20", announcement: "2026-06-01", contractEnd: "2026-10-31" },
+            { id: "#23", title: "Developing and documenting Standard Operating Procedures (SOPs) and coordination protocol.", budget: "$15,882", budgetNum: 15882, category: "Basic Service", type: "Service", region: "East", municipality: "—", invitation: "IC", staff: "Shembesh", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#33", title: "Procurement of Logistics for the provision of specialized capacity building in psychosocial support to 50 practitioners", budget: "$15,000", budgetNum: 15000, category: "Basic Service", type: "Service", region: "East", municipality: "—", invitation: "RFQ", staff: "Shembesh", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#39", title: "Procurement of Transportation Services for the Activation of mobile field psychosocial support teams - Organize mobile outreach sessions/clinics", budget: "$15,000", budgetNum: 15000, category: "Services", type: "Service", region: "East", municipality: "—", invitation: "RFP", staff: "Shembesh", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#38", title: "Procurement of Trainer for the provision of specialized capacity building in psychosocial support to 50 practitioners", budget: "$10,000", budgetNum: 10000, category: "Services", type: "IC", region: "East", municipality: "—", invitation: "CTG", staff: "Lujain", donor: "20", announcement: "2026-06-01", contractEnd: "2026-08-31" },
+            { id: "#40", title: "Procurement fo Logistics Service Provier for Develop a national policy for the management of mass casualties", budget: "$5,000", budgetNum: 5000, category: "Services", type: "IC", region: "East", municipality: "—", invitation: "CTG", staff: "Shembesh", donor: "20", announcement: "2026-10-01", contractEnd: "2026-12-31" }
+        ];
+
+        // Color Logic
+        const colors = {
+            green: 'var(--green)',
+            orange: 'var(--orange)',
+            blue: 'var(--blue)'
+        };
+
+        function getCategoryColor(category) {
+            const cat = category.toLowerCase();
+            if (cat.includes('livelihood')) return colors.green;
+            if (cat.includes('peacebuilding')) return colors.orange;
+            return colors.blue; 
+        }
+
+        // Initialize total budget
+        const totalBudgetNum = rawActivities.reduce((acc, curr) => acc + curr.budgetNum, 0);
+        document.getElementById('total-budget').innerText = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(totalBudgetNum);
+
+        // Setup Dropdowns
+        function populateDropdown(selectId, key) {
+            const select = document.getElementById(selectId);
+            const uniqueVals = [...new Set(rawActivities.map(a => a[key]))];
+            uniqueVals.forEach(val => {
+                const opt = document.createElement('option');
+                opt.value = val;
+                opt.textContent = val;
+                select.appendChild(opt);
+            });
+        }
+        populateDropdown('categoryFilter', 'category');
+        populateDropdown('regionFilter', 'region');
+        populateDropdown('invitationFilter', 'invitation');
+
+        // Rendering Engine
+        const cardsContainer = document.getElementById('cardsContainer');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const regionFilter = document.getElementById('regionFilter');
+        const invitationFilter = document.getElementById('invitationFilter');
+
+        function renderCards() {
+            const term = searchInput.value.toLowerCase();
+            const cat = categoryFilter.value;
+            const reg = regionFilter.value;
+            const inv = invitationFilter.value;
+
+            const filtered = rawActivities.filter(a => {
+                const matchSearch = a.title.toLowerCase().includes(term) || a.id.toLowerCase().includes(term);
+                const matchCat = cat === 'All' || a.category === cat;
+                const matchReg = reg === 'All' || a.region === reg;
+                const matchInv = inv === 'All' || a.invitation === inv;
+                return matchSearch && matchCat && matchReg && matchInv;
+            });
+
+            if (filtered.length === 0) {
+                cardsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-filter fa-3x" style="color: var(--border-color); margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">No activities found</h3>
+                        <p>Try adjusting your search or filter settings.</p>
+                    </div>`;
+                return;
+            }
+
+            cardsContainer.innerHTML = filtered.map(a => {
+                const color = getCategoryColor(a.category);
+                return `
+                    <div class="card" style="border-top-color: ${color}">
+                        <div class="card-header-top">
+                            <span class="activity-id">Activity ${a.id}</span>
+                            <span class="budget" style="color: ${color}">${a.budget}</span>
+                        </div>
+                        <h3 class="card-title">${a.title}</h3>
+                        
+                        <div class="badges">
+                            <span class="badge" style="background: ${color}15; color: ${color}; border-color: ${color}30">
+                                <i class="fas fa-tag"></i> ${a.category}
+                            </span>
+                            <span class="badge"><i class="fas fa-briefcase" style="color: var(--text-muted)"></i> ${a.type}</span>
+                            <span class="badge"><i class="fas fa-map-marker-alt" style="color: var(--text-muted)"></i> ${a.region}</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <span class="detail-label">Municipality</span>
+                                <span class="detail-value ${a.municipality === '—' ? 'empty' : ''}">${a.municipality}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Inv. Type</span>
+                                <span class="detail-value pill">${a.invitation}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Responsible Staff</span>
+                                <span class="detail-value"><i class="far fa-user" style="color: var(--text-muted)"></i> ${a.staff}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Donor</span>
+                                <span class="detail-value ${a.donor === '—' ? 'empty' : ''}">${a.donor}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Target Date</span>
+                                <span class="detail-value ${a.announcement === '—' ? 'empty' : ''}">
+                                    <i class="far fa-calendar-alt" style="color: var(--text-muted)"></i> ${a.announcement}
+                                </span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Contract End</span>
+                                <span class="detail-value ${a.contractEnd === '—' ? 'empty' : ''}">
+                                    <i class="far fa-calendar-alt" style="color: var(--text-muted)"></i> ${a.contractEnd}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Attach Event Listeners
+        searchInput.addEventListener('input', renderCards);
+        categoryFilter.addEventListener('change', renderCards);
+        regionFilter.addEventListener('change', renderCards);
+        invitationFilter.addEventListener('change', renderCards);
+
+        // Initial Render
+        renderCards();
+
+    </script>
+</body>
+</html>
